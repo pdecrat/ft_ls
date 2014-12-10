@@ -90,6 +90,7 @@ t_list				*ft_lstcpy_and_del(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, t_list*(*f)(t_list *elem));
 void				ft_lstfreeone(t_list **alst, t_list **to_free);
 t_list				*ft_lstrev(t_list **alst);
+t_list				*ft_lstjoin(t_list **dst, t_list *src);
 int				ft_is_dir(char *name);
 
 #endif

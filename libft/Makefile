@@ -82,7 +82,8 @@ SRC = 		ft_memalloc.c \
 			ft_lstmap.c \
 			ft_lstfreeone.c \
 			ft_lstrev.c \
-			ft_is_dir.c
+			ft_is_dir.c \
+			ft_lstjoin.c
 
 OBJ = $(SRC:.c=.o)
 

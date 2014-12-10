@@ -21,9 +21,9 @@ char		*ft_strstr(char const *s1, char const *s2)
 	while (s1[is1] || !*s2)
 	{
 		is2 = 0;
-		while (s1[is1 + is2] == s2[is2] || !s2[is2])
+		while (s1[is1 + is2] == s2[is2])
 		{
-			if (!s2[is2])
+			if (!s2[is2 + 1])
 				return ((char *)(s1 + is1));
 			is2++;
 		}

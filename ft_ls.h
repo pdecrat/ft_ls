@@ -26,11 +26,15 @@ int			ft_is_opt(char *av, t_core *core);
 int			ft_is_dir(char *name);
 int			ft_handle_output(t_core *core);
 int			ft_handle_dir(char *p_name, t_core *core);
+void			ft_ls_display(t_core *core);
+void			ft_ls_sort(t_core *core);
+
 char			*ft_strdup(char const *s);
 void			*ft_memalloc(size_t size);
 char			*ft_strnew(size_t size);
 t_list			*ft_lstnew(void const *content, size_t content_size);
 t_list			*ft_lstcpyone(t_list *to_copy);
+t_list			*ft_lstjoin(t_list **dst, t_list *src);
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_memdel(void **ap);
 size_t			ft_strlen(char *s);
@@ -43,6 +47,7 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_strdel(char **as);
 char			*ft_strjoin(char const *s1, char const *s2);
 unsigned int		ft_strcmp(char const *s1, char const *s2);
+char			*ft_strstr(char const *s1, char const *s2);
 
 void			ft_putchar(char c);
 void			ft_putstr(char *s);
