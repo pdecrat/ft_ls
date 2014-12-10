@@ -42,5 +42,7 @@ int		ft_handle_dir(char *p_name, t_core *core)
 	tmp = PENDING->next;
 	ft_lstfreeone(&PENDING, &PENDING);
 	PENDING = tmp;
+	if (!PENDING && !(PENDING = (t_list *)ft_memalloc(sizeof(t_list))))
+		return (1);;
 	return (0);
 }

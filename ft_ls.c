@@ -53,10 +53,10 @@ int		main(int argc, char **argv)
 	else
 		while (argv[i])
 			ret += ft_sort_arg(argv[i++], core);
-	while(OUTPUT)
+	while(OUTPUT->content || PENDING->content)
 	{
 		ft_handle_output(core);
-		if (PENDING)
+		if (PENDING->content)
 			ft_handle_dir(PENDING->content, core);
 	}
 	ft_free_core(&core);

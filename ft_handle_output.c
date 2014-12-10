@@ -13,7 +13,9 @@ int	ft_handle_output(t_core *core)
 			&& ft_strcmp(OUTPUT->content, ".."))
 				ft_lstadd(&PENDING, ft_lstcpyone(OUTPUT->content));
 		ft_lstfreeone(&OUTPUT, &OUTPUT);
-		core->output = tmp;
+		OUTPUT = tmp;
 	}
+	if (!OUTPUT && !(OUTPUT = (t_list *)ft_memalloc(sizeof(t_list))))
+		return (1);
 	return (0);
 }
