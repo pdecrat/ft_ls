@@ -9,8 +9,8 @@ t_list		*ft_rem_hidden(t_list **lst)
 	while (cursor && cursor->content)
 	{
 		next = cursor->next;
-		if ((ft_strstr(cursor->content, "/.")))
-			ft_lstfreeone(lst, &cursor);
+		if ((ft_strstr(cursor->content, "/."))){
+			ft_lstfreeone(lst, &cursor);}
 		cursor = next;
 	}
 	return (*lst);

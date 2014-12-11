@@ -42,6 +42,7 @@ void			ft_putendl(char const *s);
 char			*ft_strchr(char const *s, int c);
 t_list			*ft_lstrev(t_list **output);
 void			ft_lstfreeone(t_list **alst, t_list **to_free);
+t_list			*ft_lstcpy_and_del(t_list *to_copy);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_strdel(char **as);

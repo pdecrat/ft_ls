@@ -27,7 +27,12 @@ int		ft_handle_dir(char *p_name, t_core *core)
 	struct dirent	*buf;
 	char		*pathname;
 
-	if (!(dir_stream = opendir(p_name)))
+/*	if (PENDING->next || (ft_strchr(OPT, 'R')))
+	{
+		ft_putstr(p_name);
+		ft_putendl(":");
+	}
+*/	if (!(dir_stream = opendir(p_name)))
 	{
 		perror(p_name);
 		return (1);

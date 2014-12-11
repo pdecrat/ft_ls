@@ -21,24 +21,18 @@ void	ft_del_files(t_core *core)
 
 int	ft_handle_output(t_core *core)
 {
-	int		has_displayed;
-
-	has_displayed = 0;
 	if (OUTPUT && OUTPUT->content)
 	{
 		ft_ls_sort(core);
 		ft_ls_display(core);
-		has_displayed = 1;
 		ft_del_files(core);
 	}
-	if (OUTPUT && ft_strchr(OPT, 'R'))
-		PENDING = ft_lstjoin(&PENDING, OUTPUT);
-	if (PENDING && PENDING->content)
+	if (OUTPUT && OUTPUT->content && ft_strchr(OPT, 'R'))
 	{
-		if (has_displayed)
-			ft_putchar('\n');
-		ft_putstr(PENDING->content);
-		ft_putendl(":");
+		if (PENDING->content)
+			PENDING = ft_lstjoin(&PENDING, OUTPUT);
+		else
+			PENDING = ft_lstcpy_and_del(OUTPUT);
 	}
 	if (!OUTPUT && !(OUTPUT = (t_list *)ft_memalloc(sizeof(t_list))))
 		return (1);

@@ -1,5 +1,31 @@
 #include "ft_ls.h"
 
+int		ft_handle_core(t_core *core)
+{
+	int		has_displayed;
+
+	has_displayed = 0;
+	while(OUTPUT->content || PENDING->content)
+	{
+		if (OUTPUT->content && ++has_displayed)
+			ft_handle_output(core);
+		if (PENDING->content || ft_strchr(OPT, 'R'))
+		{
+			if (has_displayed)
+				ft_putchar('\n');
+			if (has_displayed || ft_strchr(OPT, 'R')
+				|| (PENDING->next && PENDING->next->content))
+			{
+				ft_putstr(PENDING->content);
+				ft_putendl(":");
+			}
+		}
+		if (PENDING->content)
+			ft_handle_dir(PENDING->content, core);
+	}
+	return (0);
+}
+
 int		ft_sort_arg(char *av, t_core *core)
 {
 	int		ret;
@@ -47,18 +73,13 @@ int		main(int argc, char **argv)
 	while (ret == 0 && --argc && argv[i] && argv[i][0] == '-')
 		ret += ft_is_opt(&argv[i++][1], core);
 	if (ret == 0 && argc == 0)
-		ret += ft_handle_dir(".", core);
+		ft_lstadd(&PENDING, ft_lstnew(".", 2));
 	else if (ret == 0 && argc == 1 && (ft_is_dir(argv[i])) == 1)
-		ret += ft_handle_dir(argv[i], core);
+		ft_lstadd(&PENDING, ft_lstnew(argv[i], ft_strlen(argv[i] + 1)));
 	else
 		while (argv[i])
 			ret += ft_sort_arg(argv[i++], core);
-	while(OUTPUT->content || PENDING->content)
-	{
-		ft_handle_output(core);
-		if (PENDING->content)
-			ft_handle_dir(PENDING->content, core);
-	}
+	ret += ft_handle_core(core);
 	ft_free_core(&core);
 	return ((ret > 0) ? 1 : 0);
 }
