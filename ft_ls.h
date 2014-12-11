@@ -27,7 +27,7 @@ int			ft_is_dir(char *name);
 int			ft_handle_output(t_core *core);
 int			ft_handle_dir(char *p_name, t_core *core);
 void			ft_ls_display(t_core *core);
-void			ft_ls_sort(t_core *core);
+t_list			*ft_ls_sort(t_core *core);
 
 char			*ft_strdup(char const *s);
 void			*ft_memalloc(size_t size);
@@ -49,7 +49,9 @@ void			ft_strdel(char **as);
 char			*ft_strjoin(char const *s1, char const *s2);
 unsigned int		ft_strcmp(char const *s1, char const *s2);
 char			*ft_strstr(char const *s1, char const *s2);
+char			*ft_strrchr(char const *s, int c);
 
+void			ft_putlst(t_list *lst);
 void			ft_putchar(char c);
 void			ft_putstr(char *s);
 void			ft_putnbr(int n);

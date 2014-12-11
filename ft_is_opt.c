@@ -20,9 +20,9 @@ int             ft_is_opt(char *arg, t_core *core)
 			return (1);
                 }
         }
-	tmp = ft_strdup(core->opt);
-	ft_strdel(&core->opt);
-        core->opt = ft_strjoin(tmp, arg);
+	tmp = ft_strdup(OPT);
+	ft_strdel(&OPT);
+        OPT = ft_strjoin(tmp, arg);
 	ft_strdel(&tmp);
         return (0);
 }

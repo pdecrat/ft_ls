@@ -27,27 +27,21 @@ int		ft_handle_dir(char *p_name, t_core *core)
 	struct dirent	*buf;
 	char		*pathname;
 
-/*	if (PENDING->next || (ft_strchr(OPT, 'R')))
-	{
-		ft_putstr(p_name);
-		ft_putendl(":");
-	}
-*/	if (!(dir_stream = opendir(p_name)))
-	{
+	if (!(dir_stream = opendir(p_name)))
 		perror(p_name);
-		return (1);
-	}
-	while ((buf = readdir(dir_stream)))
-	{
-		pathname = ft_pathname(p_name, buf->d_name);
-		ft_lstadd(&OUTPUT, ft_lstnew(pathname, ft_strlen(pathname) + 1));
-		ft_memdel((void **)&pathname);
-	}
+	if (dir_stream)
+		while ((buf = readdir(dir_stream)))
+		{
+			pathname = ft_pathname(p_name, buf->d_name);
+			if (OUTPUT)
+				ft_lstadd(&OUTPUT, ft_lstnew(pathname, ft_strlen(pathname) + 1));
+			else
+				OUTPUT = ft_lstnew(pathname, ft_strlen(pathname) + 1);
+			ft_memdel((void **)&pathname);
+		}
 	closedir(dir_stream);
 	tmp = PENDING->next;
 	ft_lstfreeone(&PENDING, &PENDING);
 	PENDING = tmp;
-	if (!PENDING && !(PENDING = (t_list *)ft_memalloc(sizeof(t_list))))
-		return (1);;
 	return (0);
 }

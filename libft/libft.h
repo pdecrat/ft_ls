@@ -29,6 +29,7 @@ void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
+void				ft_putlst(t_list *lst);
 size_t				ft_strlen(char const *s);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
@@ -91,6 +92,7 @@ t_list				*ft_lstmap(t_list *lst, t_list*(*f)(t_list *elem));
 void				ft_lstfreeone(t_list **alst, t_list **to_free);
 t_list				*ft_lstrev(t_list **alst);
 t_list				*ft_lstjoin(t_list **dst, t_list *src);
+void				ft_lstfree(t_list **alst);
 int				ft_is_dir(char *name);
 
 #endif

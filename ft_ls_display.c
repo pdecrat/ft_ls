@@ -3,11 +3,15 @@
 void		ft_ls_display(t_core *core)
 {
 	t_list		*cursor;
+	char		*tmp;
 
 	cursor = OUTPUT;
 	while (cursor)
 	{
-		ft_putendl(cursor->content);
+		if ((tmp = ft_strrchr(cursor->content, '/')))
+			ft_putendl(tmp + 1);
+		else
+			ft_putendl(cursor->content);
 		cursor = cursor->next;
 	}
 }
