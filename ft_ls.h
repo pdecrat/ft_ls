@@ -50,6 +50,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 unsigned int		ft_strcmp(char const *s1, char const *s2);
 char			*ft_strstr(char const *s1, char const *s2);
 char			*ft_strrchr(char const *s, int c);
+int			ft_is_file_foo(char *p_name, char *type);
 
 void			ft_putlst(t_list *lst);
 void			ft_putchar(char c);

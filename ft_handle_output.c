@@ -9,10 +9,12 @@ t_list	*ft_del_files(t_core *core)
 	while (cursor)
 	{
 		tmp = cursor->next;
-		if (!(ft_strchr(OPT, 'R')) || (ft_is_dir(cursor->content)) != 1
+		if (!(ft_strchr(OPT, 'R'))
 			|| !(ft_strcmp(ft_strrchr(cursor->content, '/'), "/."))
-			|| !(ft_strcmp(ft_strrchr(cursor->content, '/'), "/..")))
-			ft_lstfreeone(&OUTPUT, &cursor);
+			|| !(ft_strcmp(ft_strrchr(cursor->content, '/'), "/.."))
+			|| (ft_is_file_foo(cursor->content, "link"))
+			|| (ft_is_dir(cursor->content)) != 1)
+				ft_lstfreeone(&OUTPUT, &cursor);
 		cursor = tmp;
 	}
 	return (OUTPUT);

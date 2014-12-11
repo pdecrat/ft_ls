@@ -94,5 +94,6 @@ t_list				*ft_lstrev(t_list **alst);
 t_list				*ft_lstjoin(t_list **dst, t_list *src);
 void				ft_lstfree(t_list **alst);
 int				ft_is_dir(char *name);
+int				ft_is_file_foo(char *p_name, char *type);
 
 #endif
