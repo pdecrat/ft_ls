@@ -10,4 +10,5 @@ void		ft_lstfree(t_list **alst)
 		ft_lstfreeone(alst, alst);
 		*alst = next;
 	}
+	alst = NULL;
 }

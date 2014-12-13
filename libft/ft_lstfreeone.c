@@ -21,7 +21,6 @@ void		ft_lstfreeone(t_list **alst, t_list **to_free)
 	if (cursor == *to_free)
 	{
 		*alst = cursor->next;
-		cursor->next = NULL;
 		ft_memdel((void **)&cursor->content);
 		ft_memdel((void **)&cursor);
 	}
@@ -33,7 +32,6 @@ void		ft_lstfreeone(t_list **alst, t_list **to_free)
 		{
 			tmp = cursor->next;
 			cursor->next = cursor->next->next;
-			tmp->next = NULL;
 			ft_memdel((void **)&tmp->content);
 			ft_memdel((void **)&tmp);
 		}
