@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_ls_lstsort_t.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdecrat <pdecrat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 16:18:30 by pdecrat           #+#    #+#             */
-/*   Updated: 2014/12/15 15:10:24 by pdecrat          ###   ########.fr       */
+/*   Created: 2014/12/15 14:49:35 by pdecrat           #+#    #+#             */
+/*   Updated: 2014/12/15 15:08:56 by pdecrat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char const *s1, char const *s2)
+#include "ft_ls.h"
+
+t_list		*ft_ls_lstsort_t(t_list *lst)
 {
-	while (*s1 == *s2 && *s1 && *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	return (lst);
 }
