@@ -6,7 +6,7 @@
 /*   By: pdecrat <pdecrat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:03:08 by pdecrat           #+#    #+#             */
-/*   Updated: 2014/11/19 13:39:39 by pdecrat          ###   ########.fr       */
+/*   Updated: 2014/12/17 15:49:24 by pdecrat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void				ft_lstfreeone(t_list **alst, t_list **to_free);
 t_list				*ft_lstrev(t_list **alst);
 t_list				*ft_lstjoin(t_list **dst, t_list *src);
 void				ft_lstfree(t_list **alst);
-int				ft_is_dir(char *name);
-int				ft_is_file_foo(char *p_name, char *type);
+int					ft_is_dir(char *name);
+int					ft_is_file_foo(char *p_name, char *type);
 
 #endif

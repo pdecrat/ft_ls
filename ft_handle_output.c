@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_handle_output.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdecrat <pdecrat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/17 15:43:46 by pdecrat           #+#    #+#             */
+/*   Updated: 2014/12/17 15:54:04 by pdecrat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
-t_list	*ft_del_files(t_core *core)
+t_list			*ft_del_files(t_core *core)
 {
 	t_list		*cursor;
 	t_list		*tmp;
@@ -14,18 +26,18 @@ t_list	*ft_del_files(t_core *core)
 			|| !(ft_strcmp(ft_strrchr(cursor->content, '/'), "/.."))
 			|| (ft_is_file_foo(cursor->content, "link"))
 			|| (ft_is_dir(cursor->content)) != 1)
-				ft_lstfreeone(&OUTPUT, &cursor);
+			ft_lstfreeone(&OUTPUT, &cursor);
 		cursor = tmp;
 	}
 	return (OUTPUT);
 }
 
-int	ft_handle_output(t_core *core)
+int				ft_handle_output(t_core *core)
 {
 	if (OUTPUT)
 	{
 		OUTPUT = ft_ls_sort(core);
-		ft_ls_display(core);
+		(ft_strchr(OPT, "l")) ? ft_long_diplay(core) : ft_ls_display(core);
 		OUTPUT = ft_del_files(core);
 	}
 	if (OUTPUT && ft_strchr(OPT, 'R'))

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_handle_dir.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdecrat <pdecrat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/17 15:43:40 by pdecrat           #+#    #+#             */
+/*   Updated: 2014/12/17 15:53:45 by pdecrat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 #include <dirent.h>
 #include <sys/types.h>
 
-char		*ft_pathname(char *current, char *sub)
+char				*ft_pathname(char *current, char *sub)
 {
-	char		*pathname;
-	char		*tmp;
+	char			*pathname;
+	char			*tmp;
 
 	if (current[ft_strlen(current) - 1] == '/')
 		pathname = ft_strjoin(current, sub);
@@ -20,12 +32,12 @@ char		*ft_pathname(char *current, char *sub)
 	return (pathname);
 }
 
-int		ft_handle_dir(char *p_name, t_core *core)
+int					ft_handle_dir(char *p_name, t_core *core)
 {
-	t_list		*tmp;
-	DIR		*dir_stream;
+	t_list			*tmp;
+	DIR				*dir_stream;
 	struct dirent	*buf;
-	char		*pathname;
+	char			*pathname;
 
 	if (!(dir_stream = opendir(p_name)))
 		perror(p_name);
@@ -34,12 +46,14 @@ int		ft_handle_dir(char *p_name, t_core *core)
 		{
 			pathname = ft_pathname(p_name, buf->d_name);
 			if (OUTPUT)
-				ft_lstadd(&OUTPUT, ft_lstnew(pathname, ft_strlen(pathname) + 1));
+				ft_lstadd(&OUTPUT, ft_lstnew(pathname,
+							ft_strlen(pathname) + 1));
 			else
 				OUTPUT = ft_lstnew(pathname, ft_strlen(pathname) + 1);
 			ft_memdel((void **)&pathname);
 		}
-	closedir(dir_stream);
+	if (dir_stream)
+		closedir(dir_stream);
 	tmp = PENDING->next;
 	ft_lstfreeone(&PENDING, &PENDING);
 	PENDING = tmp;

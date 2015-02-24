@@ -1,18 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_dir.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdecrat <pdecrat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/17 15:44:37 by pdecrat           #+#    #+#             */
+/*   Updated: 2014/12/17 15:47:44 by pdecrat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 
-/** Takes a pathname as argument, returns 1 if it is a directory,
-*					  0 if it isn't
-*					 -1 if the pathname is incorrect
-**/
-
 int		ft_is_dir(char *name)
 {
-	struct stat	*buf;
-	int		ret;
+	struct stat		*buf;
+	int				ret;
 
 	ret = 0;
 	if (!(buf = (struct stat *)ft_memalloc(sizeof(*buf))))
