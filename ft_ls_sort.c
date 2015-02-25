@@ -6,7 +6,7 @@
 /*   By: pdecrat <pdecrat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 14:48:20 by pdecrat           #+#    #+#             */
-/*   Updated: 2014/12/15 15:08:14 by pdecrat          ###   ########.fr       */
+/*   Updated: 2014/12/17 16:06:31 by pdecrat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_list		*ft_rem_hidden(t_list **lst)
 	while (cursor)
 	{
 		next = cursor->next;
-		if ((ft_strstr(cursor->content, "/."))){
-			ft_lstfreeone(lst, &cursor);}
+		if ((ft_strstr(cursor->content, "/.")))
+			ft_lstfreeone(lst, &cursor);
 		cursor = next;
 	}
 	return (*lst);
@@ -32,7 +32,7 @@ t_list		*ft_ls_sort(t_core *core)
 {
 	if (!(ft_strchr(OPT, 'a')))
 		OUTPUT = ft_rem_hidden(&OUTPUT);
-	OUTPUT = (ft_strchr(OPT, 'R')) ? ft_ls_lstsort_t(OUTPUT)
+	OUTPUT = (ft_strchr(OPT, 't')) ? ft_ls_lstsort_t(OUTPUT)
 		: ft_ls_lstsort(OUTPUT);
 	if (ft_strchr(OPT, 'r'))
 		OUTPUT = ft_lstrev(&OUTPUT);
