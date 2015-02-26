@@ -21,7 +21,7 @@ int		ft_is_file_foo(char *p_name, char *type)
 	ret = 0;
 	if (!(buf = (struct stat *)ft_memalloc(sizeof(*buf))))
 		ret = -1;
-	if ((ret = stat(p_name, buf)) == -1)
+	if ((ret = lstat(p_name, buf)) == -1)
 		ret = -1;
 	if (ret == 0 && ft_strequ(type, "dir") && S_ISDIR(buf->st_mode))
 		ret++;
