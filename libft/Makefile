@@ -16,12 +16,15 @@ FLAGS = -Werror -Wextra -Wall
 
 SRC = 		ft_memalloc.c \
 			ft_memdel.c \
+			ft_nbrlen.c \
 			ft_putchar.c \
 			ft_putchar_fd.c \
 			ft_putstr.c \
 			ft_putstr_fd.c \
 			ft_putendl.c \
 			ft_putendl_fd.c \
+			ft_putnbr.c \
+			ft_putnbr_fd.c \
 			ft_strclr.c \
 			ft_strdel.c \
 			ft_strequ.c \
@@ -85,7 +88,8 @@ SRC = 		ft_memalloc.c \
 			ft_is_dir.c \
 			ft_lstjoin.c \
 			ft_putlst.c \
-			ft_is_file_foo.c
+			ft_is_file_foo.c \
+			ft_lstlen.c
 
 OBJ = $(SRC:.c=.o)
 

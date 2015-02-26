@@ -10,7 +10,8 @@ SRC = ft_get_time.c \
 	  ft_ls_display.c \
 	  ft_ls_lstsort.c \
 	  ft_ls_lstsort_t.c \
-	  ft_ls_sort.c
+	  ft_ls_sort.c \
+	ft_get_stat.c
 
 Includes = ft_ls.h
 

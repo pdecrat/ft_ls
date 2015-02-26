@@ -19,6 +19,19 @@
 
 # include <string.h>
 # include <stdio.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <unistd.h>
+
+typedef struct		s_ldisplay
+{
+	int		total;
+	int		rights;
+	int		links;
+	int		user;
+	int		group;
+	int		size;
+}			t_ldisplay;
 
 typedef struct		s_list
 {
@@ -43,7 +56,7 @@ void				ft_long_display(t_core *core);
 t_list				*ft_ls_sort(t_core *core);
 t_list				*ft_ls_lstsort(t_list *lst);
 t_list				*ft_ls_lstsort_t(t_list *lst);
-
+struct stat			*ft_get_stat(char *p_name);
 char				*ft_strdup(char const *s);
 void				*ft_memalloc(size_t size);
 char				*ft_strnew(size_t size);
@@ -67,6 +80,7 @@ char				*ft_strstr(char const *s1, char const *s2);
 char				*ft_strrchr(char const *s, int c);
 int					ft_is_file_foo(char *p_name, char *type);
 int					ft_get_time(char *p_name);
+int				ft_lstlen(t_list *lst);
 
 void				ft_putlst(t_list *lst);
 void				ft_putchar(char c);
