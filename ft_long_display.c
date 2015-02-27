@@ -14,16 +14,31 @@
 
 static void	ft_get_padding(struct stat *stat, t_ldisplay *padding)
 {
-	int	tmp;
+	unsigned int	tmp;
+	char		*buf;
 
 	tmp = 0;
 	padding->total += stat->st_blocks;
+	tmp = ft_nbrlen(stat->st_nlink);
+	LINKS = (LINKS > tmp) ? LINKS : tmp;
+	if ((buf = ft_getpwuid(stat->st_uid)))
+		USER = (USER > ft_strlen(buf)) ? USER : ft_strlen(buf);
+	else
+		USER = (USER > ft_nbrlen(stat->st_uid)) ? USER
+			: ft_nbrlen(stat->st_uid);
+	buf = NULL;
+	if ((buf = ft_getgrid(stat->st_gid)))
+		GROUP = (GROUP > ft_strlen(buf)) ? GROUP : ft_strlen(buf);
+	else
+		GROUP = (GROUP > ft_nbrlen(stat->st_gid)) ? GROUP
+			: ft_nbrlen(stat->st_gid);
+	tmp = ft_nbrlen(stat->st_size);
+	SIZE = (SIZE > tmp) ? SIZE : tmp;
 }
 
 static void	ft_init_padding(t_ldisplay *padding)
 {
 	padding->total = 0;
-	padding->rights = 0;
 	padding->links = 0;
 	padding->user = 0;
 	padding->group = 0;
@@ -45,8 +60,6 @@ static void	ft_get_stats(t_list *lst, struct stat **stats,
 		cursor = cursor->next;
 		++i;
 	}
-	ft_putnbr(padding->total);
-	ft_putchar('\n');
 }
 
 void		ft_long_display(t_core *core)

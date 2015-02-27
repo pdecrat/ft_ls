@@ -30,7 +30,7 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putlst(t_list *lst);
-int				ft_nbrlen(int nbr);
+unsigned int				ft_nbrlen(int nbr);
 size_t				ft_strlen(char const *s);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);

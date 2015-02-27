@@ -22,16 +22,21 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
+# include <grp.h>
+# include <pwd.h>
 
 typedef struct		s_ldisplay
 {
 	int		total;
-	int		rights;
-	int		links;
-	int		user;
-	int		group;
-	int		size;
+	unsigned int		links;
+	unsigned int		user;
+	unsigned int		group;
+	unsigned int		size;
 }			t_ldisplay;
+# define LINKS padding->links
+# define USER padding->user
+# define GROUP padding->group
+# define SIZE padding->size
 
 typedef struct		s_list
 {
@@ -60,6 +65,8 @@ struct stat			*ft_get_stat(char *p_name);
 char				*ft_strdup(char const *s);
 void				*ft_memalloc(size_t size);
 char				*ft_strnew(size_t size);
+char				*ft_getpwuid(uid_t uid);
+char				*ft_getgrid(gid_t grid);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstcpyone(t_list *to_copy);
 t_list				*ft_lstjoin(t_list **dst, t_list *src);
@@ -81,7 +88,7 @@ char				*ft_strrchr(char const *s, int c);
 int					ft_is_file_foo(char *p_name, char *type);
 int					ft_get_time(char *p_name);
 int				ft_lstlen(t_list *lst);
-
+unsigned int			ft_nbrlen(int nbr);
 void				ft_putlst(t_list *lst);
 void				ft_putchar(char c);
 void				ft_putstr(char *s);
