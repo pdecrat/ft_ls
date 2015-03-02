@@ -24,6 +24,7 @@
 # include <unistd.h>
 # include <grp.h>
 # include <pwd.h>
+# include <time.h>
 
 typedef struct		s_ldisplay
 {
@@ -56,6 +57,8 @@ int					ft_is_opt(char *av, t_core *core);
 int					ft_is_dir(char *name);
 int					ft_handle_output(t_core *core);
 int					ft_handle_dir(char *p_name, t_core *core);
+void				ft_print_long_display(t_list *files,
+					struct stat **stats, t_ldisplay *padding);
 void				ft_ls_display(t_core *core);
 void				ft_long_display(t_core *core);
 t_list				*ft_ls_sort(t_core *core);
@@ -75,6 +78,7 @@ void				ft_memdel(void **ap);
 size_t				ft_strlen(char *s);
 void				ft_putendl(char const *s);
 char				*ft_strchr(char const *s, int c);
+char				*ft_strsub(char const *s, unsigned int start, size_t len);
 t_list				*ft_lstrev(t_list **output);
 void				ft_lstfreeone(t_list **alst, t_list **to_free);
 t_list				*ft_lstcpy_and_del(t_list *to_copy);
@@ -82,6 +86,7 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_strdel(char **as);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strdel_and_join(char *s1, char *s2);
 int					ft_strcmp(char const *s1, char const *s2);
 char				*ft_strstr(char const *s1, char const *s2);
 char				*ft_strrchr(char const *s, int c);

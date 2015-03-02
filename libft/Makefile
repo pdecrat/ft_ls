@@ -89,7 +89,8 @@ SRC = 		ft_memalloc.c \
 			ft_lstjoin.c \
 			ft_putlst.c \
 			ft_is_file_foo.c \
-			ft_lstlen.c
+			ft_lstlen.c \
+			ft_strdel_and_join.c
 
 OBJ = $(SRC:.c=.o)
 

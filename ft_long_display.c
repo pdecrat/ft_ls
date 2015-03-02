@@ -66,6 +66,7 @@ void		ft_long_display(t_core *core)
 {
 	int		lst_size;
 	struct stat	**stats;
+	void		*tmp;
 	t_ldisplay	padding;
 
 	lst_size = ft_lstlen(OUTPUT);
@@ -75,4 +76,12 @@ void		ft_long_display(t_core *core)
 	stats[lst_size] = NULL;
 	ft_init_padding(&padding);
 	ft_get_stats(OUTPUT, stats, &padding);
+	ft_print_long_display(OUTPUT, stats, &padding);
+	tmp = (void *)stats;
+	while (*stats)
+	{
+		ft_memdel((void **)&(*stats));
+		++stats;
+	}
+	ft_memdel(&tmp);
 }
