@@ -94,7 +94,7 @@ void		ft_print_long_display(t_list *files, struct stat **stats,
 
 	i = 0;
 	cursor = files;
-	while (cursor)
+	while (cursor && stats[i])
 	{
 		ft_print_file_type(stats[i]);
 		ft_print_rights(stats[i]);

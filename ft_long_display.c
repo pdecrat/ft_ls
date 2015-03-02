@@ -33,7 +33,6 @@ static void	ft_get_padding(struct stat *stat, t_ldisplay *padding)
 	char		*buf;
 
 	tmp = 0;
-	padding->total += stat->st_blocks;
 	tmp = ft_nbrlen(stat->st_nlink);
 	LINKS = (LINKS > tmp) ? LINKS : tmp;
 	if ((buf = ft_getpwuid(stat->st_uid)))
@@ -53,7 +52,6 @@ static void	ft_get_padding(struct stat *stat, t_ldisplay *padding)
 
 static void	ft_init_padding(t_ldisplay *padding)
 {
-	padding->total = 0;
 	padding->links = 0;
 	padding->user = 0;
 	padding->group = 0;
@@ -71,9 +69,12 @@ static void	ft_get_stats(t_list *lst, struct stat **stats,
 	while (cursor)
 	{
 		stats[i] = ft_get_stat(cursor->content);
-		ft_get_padding(stats[i], padding);
+		if (stats[i])
+		{
+			ft_get_padding(stats[i], padding);
+			++i;
+		}
 		cursor = cursor->next;
-		++i;
 	}
 }
 
@@ -91,6 +92,7 @@ void		ft_long_display(t_core *core)
 	stats[lst_size] = NULL;
 	ft_init_padding(&padding);
 	ft_get_stats(OUTPUT, stats, &padding);
+	ft_total(stats, lst_size);
 	ft_print_long_display(OUTPUT, stats, &padding);
 	tmp = (void *)stats;
 	while (*stats)

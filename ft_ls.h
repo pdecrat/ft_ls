@@ -25,10 +25,10 @@
 # include <grp.h>
 # include <pwd.h>
 # include <time.h>
+# include <dirent.h>
 
 typedef struct		s_ldisplay
 {
-	int		total;
 	unsigned int		links;
 	unsigned int		user;
 	unsigned int		group;
@@ -100,5 +100,6 @@ void				ft_putstr(char *s);
 void				ft_putnbr(int n);
 void				ft_print_all_padded(struct stat *stat,
 					t_ldisplay *padding);
+void				ft_total(struct stat **stats);
 
 #endif

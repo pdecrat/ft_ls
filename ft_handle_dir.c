@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-#include <dirent.h>
-#include <sys/types.h>
 
 char				*ft_pathname(char *current, char *sub)
 {
@@ -34,7 +32,6 @@ char				*ft_pathname(char *current, char *sub)
 
 int					ft_handle_dir(char *p_name, t_core *core)
 {
-	t_list			*tmp;
 	DIR				*dir_stream;
 	struct dirent	*buf;
 	char			*pathname;
@@ -54,8 +51,6 @@ int					ft_handle_dir(char *p_name, t_core *core)
 		}
 	if (dir_stream)
 		closedir(dir_stream);
-	tmp = PENDING->next;
 	ft_lstfreeone(&PENDING, &PENDING);
-	PENDING = tmp;
 	return (0);
 }
