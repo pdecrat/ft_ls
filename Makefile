@@ -12,7 +12,8 @@ SRC = ft_get_time.c \
 	  ft_ls_lstsort_t.c \
 	  ft_ls_sort.c \
 	ft_get_stat.c \
-	ft_print_long_display.c
+	ft_print_long_display.c \
+	ft_print_padded.c
 
 Includes = ft_ls.h
 

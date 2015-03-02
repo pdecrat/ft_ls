@@ -12,6 +12,21 @@
 
 #include "ft_ls.h"
 
+static int	ft_get_size(struct stat *stat)
+{
+	int	res;
+
+	res = 0;
+	if (S_ISBLK(stat->st_mode) || S_ISCHR(stat->st_mode))
+	{
+		res = ft_nbrlen(major(stat->st_rdev)) + 2;
+		res += ft_nbrlen(minor(stat->st_rdev));
+	}
+	else
+		res = ft_nbrlen(stat->st_size);
+	return (res);
+}
+
 static void	ft_get_padding(struct stat *stat, t_ldisplay *padding)
 {
 	unsigned int	tmp;
@@ -32,8 +47,8 @@ static void	ft_get_padding(struct stat *stat, t_ldisplay *padding)
 	else
 		GROUP = (GROUP > ft_nbrlen(stat->st_gid)) ? GROUP
 			: ft_nbrlen(stat->st_gid);
-	tmp = ft_nbrlen(stat->st_size);
-	SIZE = (SIZE > tmp) ? SIZE : tmp;
+	tmp = ft_get_size(stat);
+	SIZE = (tmp > SIZE) ? tmp : SIZE;
 }
 
 static void	ft_init_padding(t_ldisplay *padding)

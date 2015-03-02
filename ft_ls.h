@@ -98,5 +98,7 @@ void				ft_putlst(t_list *lst);
 void				ft_putchar(char c);
 void				ft_putstr(char *s);
 void				ft_putnbr(int n);
+void				ft_print_all_padded(struct stat *stat,
+					t_ldisplay *padding);
 
 #endif
